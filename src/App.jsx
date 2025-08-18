@@ -1,5 +1,7 @@
 //entry point
 import './App.css'
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
 import Navbar from './components/navbar';
 import Movies from './components/movies';
 import Watchlist from './components/watchlist';

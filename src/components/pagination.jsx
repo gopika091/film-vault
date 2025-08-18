@@ -1,9 +1,14 @@
 import React from 'react';
-function Pagination() {
+import { Link } from 'react-router-dom';
+
+function Pagination({handlePrev, handleNext, pageNo}) {
     return (
         <div className='bg-gray-800 p-4 justify-center flex'>
-            <h1> this is pagination component</h1>
+            <div onClick={handlePrev} className='px-8'><i className="fa-solid fa-arrow-left "></i></div>
+            <div className='font-bold'>{pageNo}</div>
+            <div onClick={handleNext} className='px-8'><i className="fa-solid fa-arrow-right"></i></div>
+           
         </div>
     );
 }
-export default Pagination;
+export default Pagination;  
