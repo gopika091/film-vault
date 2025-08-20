@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import MoviesCard from './moviescard';
 import axios from 'axios';
 import Pagination from './pagination';
-function Movies() {
+function Movies({handleAddToWatchlist, handleRemoveFromWatchlist, watchlist}) {
+    
 
     const [movies, setMovies] = useState([]);  //lets set this movies by setmovies
     const [pageNo, setPageNo] = useState(1);
@@ -46,7 +47,7 @@ function Movies() {
 
 
                 {movies.map((movieObj) => (
-                    <MoviesCard poster_path={movieObj.poster_path} name={movieObj.original_title}/>
+                    <MoviesCard key = {movieObj.id} movieObj={movieObj} poster_path={movieObj.poster_path} name={movieObj.original_title}   handleAddToWatchlist={handleAddToWatchlist} handleRemoveFromWatchlist={handleRemoveFromWatchlist} watchlist={watchlist}/>
                 ))}
 
                 {/*mapping all movies, for every movieObj we are returning a moviescard component  */}
