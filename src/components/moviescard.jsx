@@ -25,7 +25,7 @@ function MoviesCard({ poster_path, name, handleAddToWatchlist, handleRemoveFromW
             ) : (
               <div onClick={() => handleAddToWatchlist(movieObj)} className='m-2 flex justify-center items-center rounded-xl h-12 w-12 '>
               {'\u{1F60D}'} 
-          </div>
+          </div> 
              
             )}
         
