@@ -16,8 +16,8 @@ function MoviesCard({ poster_path, name, handleAddToWatchlist, handleRemoveFromW
 
     return (
         <div
-            className="h-[40vh] w-[200px] bg-cover bg-center rounded-xl hover:scale-110 duration-300 
-                       hover:cursor-pointer relative flex flex-col "
+            className=" bg-cover bg-center rounded-xl hover:scale-110 duration-300 
+                       hover:cursor-pointer relative flex flex-col  h-[50vh] w-[200px] "
             style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original/${poster_path})` }}>
             {doesContain(movieObj) ? (
                 <div onClick={() => handleRemoveFromWatchlist(movieObj)} className='m-2 flex justify-center items-center rounded-xl h-12 w-12 '>
