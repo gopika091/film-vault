@@ -7,7 +7,7 @@ import Movies from './components/movies';
 import Watchlist from './components/watchlist';
 import Banner from './components/banner';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 //imported by "npm install react-router-dom # always need this!" google
 function App() {
 
@@ -15,17 +15,34 @@ function App() {
 
   let handleAddToWatchlist = (movieObj) => {
     let newWatchlist = [...watchlist, movieObj];
+    localStorage.setItem("storedMovies", JSON.stringify(newWatchlist)); //store the watchlist in local storage...watchlist is the key (you can name it anything) //you set items in local storage
     setWatchlist(newWatchlist);
     console.log(watchlist);
   }
     
+  // let handleRemoveFromWatchlist = (movieObj) => {
+  //   let filteredWatchlist = watchlist.filter((movie) =>{
+  //       return movie.id !== movieObj.id;
+  //   });
+  //  setWatchlist(filteredWatchlist);
+  //  console.log(watchlist);
+  // }
+
   let handleRemoveFromWatchlist = (movieObj) => {
-    let filteredWatchlist = watchlist.filter((movie) =>{
-        return movie.id !== movieObj.id;
+    let filteredWatchlist = watchlist.filter((movie) => {
+      return movie.id !== movieObj.id;
     });
-   setWatchlist(filteredWatchlist);
-   console.log(watchlist);
-  }
+    setWatchlist(filteredWatchlist);
+  };
+  
+
+  useEffect(() => {
+    let MoviesFromLocalStorage = localStorage.getItem("storedMovies");   //get items from local storage
+    if (!MoviesFromLocalStorage) {
+      return;
+    }
+    setWatchlist(JSON.parse(MoviesFromLocalStorage));
+  }, []); // Add an empty dependency array here
     
 
 
@@ -45,7 +62,7 @@ function App() {
           } 
           />
 
-          <Route path="/watchlist" element={<Watchlist watchlist={watchlist} />} />
+          <Route path="/watchlist" element={<Watchlist watchlist={watchlist} setWatchlist={setWatchlist} />} />
       
 
 
